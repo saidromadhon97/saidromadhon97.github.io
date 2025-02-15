@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Said Romadhon - Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, #2b2b2b, #3e3e3e);
+            color: #ddd;
+            overflow-x: hidden;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: linear-gradient(90deg, #444, #666);
+            color: white;
+            position: relative;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            flex-direction: column;
+            text-align: center;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-skills {
+            font-size: 14px;
+            margin-top: 5px;
+            color: white;
+        }
+        .download-btn {
+            background: linear-gradient(90deg, #ff9800, #ff5722);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .download-btn:hover {
+            background: linear-gradient(90deg, #ff5722, #ff9800);
+            transform: scale(1.05);
+        }
+        header nav {
+            margin-top: 10px;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 15px;
+        }
+        .container {
+            width: 80%;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .section {
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #383838, #4a4a4a);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            text-align: left;
+        }
+        .about-content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff9800;
+            flex-shrink: 0;
+        }
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            transition: 0.3s;
+        }
+        .scroll-top:hover {
+            background: #ff5722;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #444, #666);
+            color: white;
+            margin-top: 50px;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 95%;
+                margin-top: 120px;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 style="margin-bottom:0px;">Said Romadhon</h1>
+            <p class="header-skills">Web Developer | Video Editor | Content Creator</p>
+            <button class="download-btn" onclick="window.location.href='cv.pdf';">
+                <i class="fa-solid fa-download"></i> Download CV
+            </button>
+        </div>
+        <nav>
+            <a href="#about"><i class="fa-solid fa-user"></i> About</a>
+            <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+            <a href="#skills"><i class="fa-solid fa-code"></i> Skills</a>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div id="about" class="section">
+            <h2><i class="fa-solid fa-user"></i> About Me</h2>
+            <div class="about-content">
+                <img src="profile.jpg" alt="Said Romadhon">
+                <p>Experienced web developer and video editor with a passion for technology and design.</p>
+            </div>
+        </div>
+        
+        <div id="experience" class="section">
+            <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
+            <p>Web Developer - XYZ Company</p>
+            <p>Freelance Video Editor</p>
+        </div>
+        
+        <div id="skills" class="section">
+            <h2><i class="fa-solid fa-tools"></i> Skills</h2>
+            <p>HTML, CSS, JavaScript, PHP, Laravel, Premiere Pro, After Effects</p>
+        </div>
+        
+        <div id="contact" class="section">
+            <h2><i class="fa-solid fa-envelope"></i> Contact</h2>
+            <p>Email: said.ramdhan97@gmail.com | LinkedIn: linkedin.com/in/said-romadhon</p>
+        </div>
+    </div>
+    
+    <button class="scroll-top" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll(".section");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+        
+        window.addEventListener("scroll", function() {
+            document.querySelector(".scroll-top").style.display = window.scrollY > 200 ? "block" : "none";
+        });
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
